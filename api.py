@@ -7,6 +7,10 @@ app = Flask(__name__)
 CORS(app)
 
 
+@app.route('/')
+def pagina_inicial():
+    return '<h1>Hello!</h1>'
+
 # Start flask program
 if __name__=="__main__":
     port = int(os.environ.get("PORT", 5000))
