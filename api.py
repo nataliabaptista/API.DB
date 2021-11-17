@@ -11,6 +11,10 @@ app = Flask(__name__)
 def pagina_inicial():
     return '<h1>Hello!</h1>'
 
+@app.route('valordesp/<double:valor>')
+def precodesp(valor):
+    return f'O valor da despesa é {valor} reais.'
+
 # Start flask program
 if __name__=="__main__":
     port = int(os.environ.get("PORT", 5000))
