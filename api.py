@@ -22,6 +22,25 @@ def infosdesp(nome, valor):
     DB.despesas.insert_one(data)
     return "OK"
 
+@app.route('/faturamento/<string:nome>/<float:valor>')
+def infosdesp(nome, valor):
+    data = {
+        "nome": nome,
+        "valor": valor
+    }
+    DB.faturamento.insert_one(data)
+    return "OK"
+
+@app.route('/find/despesas/')
+def findDespesas():
+    listDespesas=[]
+    for x in DB.despesas.find({}):
+        dictDespesas={
+            'nome':x['nome'],
+            'idade':x['idade']
+        }
+        listDespesas.append(dictDespesas)
+    return jsonify(listDespesas)
 
 # Start flask program
 if __name__=="__main__":
