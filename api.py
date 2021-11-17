@@ -23,7 +23,7 @@ def infosdesp(nome, valor):
     return "OK"
 
 @app.route('/faturamento/<string:nome>/<float:valor>')
-def infosdesp(nome, valor):
+def infosfatur(nome, valor):
     data = {
         "nome": nome,
         "valor": valor
