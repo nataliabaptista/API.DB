@@ -19,7 +19,7 @@ def infosdesp(nome, valor):
         "nome": nome,
         "valor": valor
     }
-    DB.pessoas.insert_one(data)
+    DB.despesas.insert_one(data)
     return "OK"
 
 
