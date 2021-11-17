@@ -5,15 +5,23 @@ import os
 
 app = Flask(__name__)
 #CORS(app)
-
+# Conexão MongoDB
+client = MongoClient('mongodb+srv://nataliabaptista:aquila12@clusterapp.d9hcl.mongodb.net/myFirstDatabase?retryWrites=true&w=majority')
+DB = client['db-dicas-roca']
 
 @app.route('/')
 def pagina_inicial():
     return '<h1>Hello!</h1>'
 
-@app.route('/valordesp/<float:valor>')
-def precodesp(valor):
-    return f'O valor da despesa é {valor} reais.'
+@app.route('/despesa/<string:nome>/<float:valor>')
+def infosdesp(nome, valor):
+    data = {
+        "nome": nome,
+        "valor": valor
+    }
+    DB.pessoas.insert_one(data)
+    return "OK"
+
 
 # Start flask program
 if __name__=="__main__":
