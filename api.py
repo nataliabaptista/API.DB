@@ -11,7 +11,7 @@ app = Flask(__name__)
 def pagina_inicial():
     return '<h1>Hello!</h1>'
 
-@app.route('/valordesp/<double:valor>')
+@app.route('/valordesp/<float:valor>')
 def precodesp(valor):
     return f'O valor da despesa é {valor} reais.'
 
