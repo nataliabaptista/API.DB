@@ -34,7 +34,7 @@ def infosfatur(nome, valor):
 @app.route('/find/despesas/<string:nome>')
 def findDespesas():
     listDespesas=[]
-    for x in DB.despesas.find({}):
+    for x in DB.despesas.find({'nome'}):
         dictDespesas={
             'nome':x['nome'],
             'valor':x['valor']
