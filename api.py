@@ -37,7 +37,7 @@ def findDespesas():
     for x in DB.despesas.find({}):
         dictDespesas={
             'nome':x['nome'],
-            'idade':x['idade']
+            'valor':x['valor']
         }
         listDespesas.append(dictDespesas)
     return jsonify(listDespesas)
