@@ -11,7 +11,7 @@ DB = client['db-dicas-roca']
 
 @app.route('/')
 def pagina_inicial():
-    return '<h1>Hello!</h1>'
+    return '<h1>API Dicas da Roça</h1>'
 
 @app.route('/despesa/<string:nome>/<float:valor>')
 def infosdesp(nome, valor):
