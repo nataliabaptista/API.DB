@@ -31,10 +31,10 @@ def infosfatur(nome, valor):
     DB.faturamentos.insert_one(data)
     return "OK"
 
-@app.route('/find/despesas/')
+@app.route('/find/despesas/<string:nome>/')
 def findDespesas():
     listDespesas=[]
-    for x in DB.despesas.find({'nome'}):
+    for x in DB.despesas.find({}):
         dictDespesas={
             'nome':x['nome'],
             'valor':x['valor']
