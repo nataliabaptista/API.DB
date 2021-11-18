@@ -42,6 +42,17 @@ def findDespesas():
         listDespesas.append(dictDespesas)
     return jsonify(listDespesas)
 
+@app.route('/find/faturamentos/')
+def findFaturamentos():
+    listFaturamentos=[]
+    for x in DB.faturamentos.find({}):
+        dictFaturamentos={
+            'nome':x['nome'],
+            'valor':x['valor']
+        }
+        listFaturamentos.append(dictFaturamentos)
+    return jsonify(listFaturamentos)
+
 # Start flask program
 if __name__=="__main__":
     port = int(os.environ.get("PORT", 5000))
