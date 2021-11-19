@@ -35,24 +35,28 @@ def infosfatur(nome, valor, mes, ano):
     DB.faturamentos.insert_one(data)
     return "OK"
 
-@app.route('/find/despesas/<string:name>')
-def findDespesas(name):
+@app.route('/find/despesas/<int:mes>/<int:ano>')
+def findDespesas(mes, ano):
     listDespesas=[]
-    for x in DB.despesas.find({'nome': name}):
+    for x in DB.despesas.find({'mes': mes, 'ano': ano}):
         dictDespesas={
             'nome':x['nome'],
-            'valor':x['valor']
+            'valor':x['valor'],
+            'mes':x['mes'],
+            'ano':x['ano']
         }
         listDespesas.append(dictDespesas)
     return jsonify(listDespesas)
 
-@app.route('/find/faturamentos/')
-def findFaturamentos():
+@app.route('/find/faturamentos/<int:mes>/<int:ano>')
+def findFaturamentos(mes, ano):
     listFaturamentos=[]
-    for x in DB.faturamentos.find({}):
+    for x in DB.faturamentos.find({'mes': mes, 'ano': ano}):
         dictFaturamentos={
             'nome':x['nome'],
-            'valor':x['valor']
+            'valor':x['valor'],
+            'mes':x['mes'],
+            'ano':x['ano']
         }
         listFaturamentos.append(dictFaturamentos)
     return jsonify(listFaturamentos)
