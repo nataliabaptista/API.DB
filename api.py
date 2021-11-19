@@ -117,7 +117,7 @@ def findFaturamentosma(mes, ano):
     return jsonify(listFaturamentos)
 # Busca por nome
 @app.route('/find/despesas/<string:nome>')
-def findDespesasma(nome):
+def findDespesasn(nome):
     listDespesas=[]
     for x in DB.despesas.find({'nome': nome}):
         dictDespesas={
@@ -130,7 +130,7 @@ def findDespesasma(nome):
     return jsonify(listDespesas)
 
 @app.route('/find/faturamentos/<string:nome>')
-def findFaturamentosma(nome):
+def findFaturamentosn(nome):
     listFaturamentos=[]
     for x in DB.faturamentos.find({'nome': nome}):
         dictFaturamentos={
