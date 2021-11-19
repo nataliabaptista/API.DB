@@ -89,34 +89,6 @@ def findFaturamentosa(ano):
         }
         listFaturamentos.append(dictFaturamentos)
     return jsonify(listFaturamentos)
-# Busca por nome
-@app.route('/find/despesas/<string:nome>')
-def findDespesasn(nome):
-    listDespesas=[]
-    for x in DB.despesas.find({'nome': nome}):
-        dictDespesas={
-            'nome':x['nome'],
-            'valor':x['valor'],
-            'mes':x['mes'],
-            'ano':x['ano']
-        }
-        listDespesas.append(dictDespesas)
-    return jsonify(listDespesas)
-
-@app.route('/find/faturamentos/<string:nome>')
-def findFaturamentosn(nome):
-    listFaturamentos=[]
-    for x in DB.faturamentos.find({'nome': nome}):
-        dictFaturamentos={
-            'nome':x['nome'],
-            'valor':x['valor'],
-            'mes':x['mes'],
-            'ano':x['ano']
-        }
-        listFaturamentos.append(dictFaturamentos)
-    return jsonify(listFaturamentos)
-
-
 
 
 # Start flask program
