@@ -89,6 +89,32 @@ def findFaturamentosa(ano):
         }
         listFaturamentos.append(dictFaturamentos)
     return jsonify(listFaturamentos)
+# Busca sem filtro
+@app.route('/find/despesas/')
+def findDespesas():
+    listDespesas=[]
+    for x in DB.despesas.find({}):
+        dictDespesas={
+            'nome':x['nome'],
+            'valor':x['valor'],
+            'mes':x['mes'],
+            'ano':x['ano']
+        }
+        listDespesas.append(dictDespesas)
+    return jsonify(listDespesas)
+
+@app.route('/find/faturamentos/')
+def findFaturamentos():
+    listFaturamentos=[]
+    for x in DB.faturamentos.find({}):
+        dictFaturamentos={
+            'nome':x['nome'],
+            'valor':x['valor'],
+            'mes':x['mes'],
+            'ano':x['ano']
+        }
+        listFaturamentos.append(dictFaturamentos)
+    return jsonify(listFaturamentos)
 
 
 
