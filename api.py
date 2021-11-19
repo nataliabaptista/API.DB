@@ -90,7 +90,7 @@ def findFaturamentosa(ano):
         listFaturamentos.append(dictFaturamentos)
     return jsonify(listFaturamentos)
 # Busca sem filtro
-@app.route('/find/despesas/')
+@app.route('/find/despesas')
 def findDespesas():
     listDespesas=[]
     for x in DB.despesas.find({}):
@@ -103,7 +103,7 @@ def findDespesas():
         listDespesas.append(dictDespesas)
     return jsonify(listDespesas)
 
-@app.route('/find/faturamentos/')
+@app.route('/find/faturamentos')
 def findFaturamentos():
     listFaturamentos=[]
     for x in DB.faturamentos.find({}):
