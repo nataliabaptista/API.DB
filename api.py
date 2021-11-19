@@ -29,7 +29,7 @@ def infosfatur(nome, valor):
         "valor": valor
     }
     DB.faturamentos.insert_one(data)
-    return "OK"
+    return "Certo"
 
 @app.route('/find/despesas/<string:name>')
 def findDespesas(name):
