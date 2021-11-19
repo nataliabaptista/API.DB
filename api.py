@@ -91,9 +91,9 @@ def findFaturamentosa(ano):
     return jsonify(listFaturamentos)
 # Busca sem filtro
 @app.route('/find/despesas')
-def findDespesas():
+def findDespesas(nome):
     listDespesas=[]
-    for x in DB.despesas.find({}):
+    for x in DB.despesas.find({'nome': nome}):
         dictDespesas={
             'nome':x['nome'],
             'valor':x['valor'],
@@ -104,9 +104,9 @@ def findDespesas():
     return jsonify(listDespesas)
 
 @app.route('/find/faturamentos')
-def findFaturamentos():
+def findFaturamentos(nome):
     listFaturamentos=[]
-    for x in DB.faturamentos.find({}):
+    for x in DB.faturamentos.find({'nome': nome}):
         dictFaturamentos={
             'nome':x['nome'],
             'valor':x['valor'],
