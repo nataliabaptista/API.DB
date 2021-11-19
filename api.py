@@ -24,14 +24,16 @@ def infosdesp(nome, valor, mes, ano):
     DB.despesas.insert_one(data)
     return "OK"
 
-@app.route('/faturamento/<string:nome>/<float:valor>')
-def infosfatur(nome, valor):
+@app.route('/faturamento/<string:nome>/<float:valor>/<int:mes>/<int:ano>')
+def infosfatur(nome, valor, mes, ano):
     data = {
         "nome": nome,
-        "valor": valor
+        "valor": valor,
+        "mes": mes,
+        "ano": ano,
     }
     DB.faturamentos.insert_one(data)
-    return "Certo"
+    return "OK"
 
 @app.route('/find/despesas/<string:name>')
 def findDespesas(name):
