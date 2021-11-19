@@ -40,7 +40,7 @@ def infosfatur(nome, valor, mes, ano):
 # Busca sem filtro
 @app.route('/find/despesas/')
 def findDespesas(nome, valor, mes, ano):
-    listDespesas=[]
+    listDespesasgeral=[]
     for x in DB.despesas.find({'nome': nome, 'valor': valor, 'mes': mes, 'ano': ano}):
         dictDespesas={
             'nome':x['nome'],
@@ -48,12 +48,12 @@ def findDespesas(nome, valor, mes, ano):
             'mes':x['mes'],
             'ano':x['ano']
         }
-        listDespesas.append(dictDespesas)
-    return jsonify(listDespesas)
+        listDespesasgeral.append(dictDespesas)
+    return jsonify(listDespesasgeral)
 
 @app.route('/find/faturamentos/')
 def findFaturamentos(nome, valor, mes, ano):
-    listFaturamentos=[]
+    listFaturamentosgeral=[]
     for x in DB.faturamentos.find({'nome': nome, 'valor': valor, 'mes': mes, 'ano': ano}):
         dictFaturamentos={
             'nome':x['nome'],
@@ -61,8 +61,8 @@ def findFaturamentos(nome, valor, mes, ano):
             'mes':x['mes'],
             'ano':x['ano']
         }
-        listFaturamentos.append(dictFaturamentos)
-    return jsonify(listFaturamentos)
+        listFaturamentosgeral.append(dictFaturamentos)
+    return jsonify(listFaturamentosgeral)
 # Busca com mês e ano
 @app.route('/find/despesas/<int:mes>/<int:ano>')
 def findDespesasma(mes, ano):
