@@ -13,11 +13,13 @@ DB = client['db-dicas-roca']
 def pagina_inicial():
     return '<h1>API Dicas da Roça</h1>'
 
-@app.route('/despesa/<string:nome>/<float:valor>')
-def infosdesp(nome, valor):
+@app.route('/despesa/<string:nome>/<float:valor>/<int:mes>/<int:ano>')
+def infosdesp(nome, valor, mes, ano):
     data = {
         "nome": nome,
-        "valor": valor
+        "valor": valor,
+        "mes": mes,
+        "ano": ano,
     }
     DB.despesas.insert_one(data)
     return "OK"
