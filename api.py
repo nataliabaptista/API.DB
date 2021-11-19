@@ -13,6 +13,7 @@ DB = client['db-dicas-roca']
 def pagina_inicial():
     return '<h1>API Dicas da Roça</h1>'
 
+# Adicionando dados ao BD
 @app.route('/despesa/<string:nome>/<float:valor>/<int:mes>/<int:ano>')
 def infosdesp(nome, valor, mes, ano):
     data = {
@@ -35,6 +36,8 @@ def infosfatur(nome, valor, mes, ano):
     DB.faturamentos.insert_one(data)
     return "OK"
 
+        ### Buscando dados do BD ###
+# Busca com mês e ano
 @app.route('/find/despesas/<int:mes>/<int:ano>')
 def findDespesas(mes, ano):
     listDespesas=[]
@@ -60,6 +63,38 @@ def findFaturamentos(mes, ano):
         }
         listFaturamentos.append(dictFaturamentos)
     return jsonify(listFaturamentos)
+# Busca com ano
+@app.route('/find/despesas/<int:ano>')
+def findDespesas(ano):
+    listDespesas=[]
+    for x in DB.despesas.find({'ano': ano}):
+        dictDespesas={
+            'nome':x['nome'],
+            'valor':x['valor'],
+            'mes':x['mes'],
+            'ano':x['ano']
+        }
+        listDespesas.append(dictDespesas)
+    return jsonify(listDespesas)
+
+@app.route('/find/faturamentos/<int:ano>')
+def findFaturamentos(ano):
+    listFaturamentos=[]
+    for x in DB.faturamentos.find({'ano': ano}):
+        dictFaturamentos={
+            'nome':x['nome'],
+            'valor':x['valor'],
+            'mes':x['mes'],
+            'ano':x['ano']
+        }
+        listFaturamentos.append(dictFaturamentos)
+    return jsonify(listFaturamentos)
+
+
+
+
+
+
 
 # Start flask program
 if __name__=="__main__":
