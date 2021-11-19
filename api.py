@@ -38,18 +38,18 @@ def infosfatur(nome, valor, mes, ano):
 
         ### Buscando dados do BD ###
 # Busca sem filtro
-@app.route('/find/despesas/')
-def findDespesas():
-    listDespesasgeral=[]
+@app.route('/busca/despesas/')
+def buscaDespesas():
+    listDespesasAll=[]
     for x in DB.despesas.find({}):
-        dictDespesas={
+        dictDespesasAll={
             'nome':x['nome'],
             'valor':x['valor'],
             'mes':x['mes'],
             'ano':x['ano']
         }
-        listDespesasgeral.append(dictDespesas)
-    return jsonify(listDespesasgeral)
+        listDespesasAll.append(dictDespesasAll)
+        return jsonify(listDespesasAll)
 
 @app.route('/find/faturamentos/')
 def findFaturamentos():
