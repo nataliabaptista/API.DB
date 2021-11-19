@@ -39,9 +39,9 @@ def infosfatur(nome, valor, mes, ano):
         ### Buscando dados do BD ###
 # Busca sem filtro
 @app.route('/find/despesas/')
-def findDespesas():
+def findDespesas(nome, valor, mes, ano):
     listDespesas=[]
-    for x in DB.despesas.find({}):
+    for x in DB.despesas.find({'nome': nome, 'valor': valor, 'mes': mes, 'ano': ano}):
         dictDespesas={
             'nome':x['nome'],
             'valor':x['valor'],
@@ -52,9 +52,9 @@ def findDespesas():
     return jsonify(listDespesas)
 
 @app.route('/find/faturamentos/')
-def findFaturamentos():
+def findFaturamentos(nome, valor, mes, ano):
     listFaturamentos=[]
-    for x in DB.faturamentos.find({}):
+    for x in DB.faturamentos.find({'nome': nome, 'valor': valor, 'mes': mes, 'ano': ano}):
         dictFaturamentos={
             'nome':x['nome'],
             'valor':x['valor'],
